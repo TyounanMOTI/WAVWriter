@@ -56,4 +56,10 @@ public class SinWaveRecorder : MonoBehaviour {
             recordingHead += data.Length / numChannels;
         }
     }
+
+    void OnApplicationQuit() {
+        if (writer != null) {
+            writer.Close();
+        }
+    }
 }

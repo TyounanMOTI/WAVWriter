@@ -94,4 +94,8 @@ public class WAVWriter {
             writer.Write(sample);
         }
     }
+
+    public void Close() {
+        writer.Close();
+    }
 }

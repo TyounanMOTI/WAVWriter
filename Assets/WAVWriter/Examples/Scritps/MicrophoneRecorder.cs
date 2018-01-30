@@ -46,6 +46,12 @@ public class MicrophoneRecorder : MonoBehaviour {
         }
     }
 
+    void OnApplicationQuit() {
+        if (writer != null) {
+            writer.Close();
+        }
+    }
+
     static int GetDataLength(int bufferLength, int head, int tail) {
         if (head < tail) {
             return tail - head;
