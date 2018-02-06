@@ -20,11 +20,11 @@ public class SinWaveRecorder : MonoBehaviour {
     int recordingHead = 0;
 
     void Start() {
-        writer = new WAVWriter("result.wav", 1, samplingRate);
+        writer = new WAVWriter("result.wav", 2, samplingRate);
         recordingBuffer = new float[1024 * 20];
 
         source = GetComponent<AudioSource>();
-        source.clip = AudioClip.Create("SinWave", 1, 1, samplingRate, false);
+        source.clip = AudioClip.Create("SinWave", 1, 2, samplingRate, false);
         source.loop = true;
         source.Play();
     }
@@ -49,7 +49,6 @@ public class SinWaveRecorder : MonoBehaviour {
             }
         }
         lock(recordingBuffer) {
-            // monaural recording
             for (int i = 0; i < data.Length; i += numChannels) {
                 recordingBuffer[recordingHead + i / numChannels] = data[i];
             }
