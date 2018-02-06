@@ -17,7 +17,7 @@ public class WAVWriter {
     public WAVWriter(string path, int numChannels, int samplingRate) {
         this.numChannels = numChannels;
         this.samplingRate = samplingRate;
-        writer = new BinaryWriter(File.OpenWrite(path), System.Text.Encoding.ASCII);
+        writer = new BinaryWriter(new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Write), System.Text.Encoding.ASCII);
 
         WriteHeader();
     }
